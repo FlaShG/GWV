@@ -1,7 +1,7 @@
 
 public class LabyrinthPoint
 {
-    private char _c;
+    private final char _c;
     
     public LabyrinthPoint north;
     public LabyrinthPoint south;
@@ -9,9 +9,10 @@ public class LabyrinthPoint
     public LabyrinthPoint east;
     
     public boolean visited = false;
+    public boolean onPath = false;
     public final Vector2 position;
     
-    public float cost = 0;
+    public float cost = Float.MAX_VALUE;
     public float h = 1;
     
     
@@ -23,7 +24,17 @@ public class LabyrinthPoint
     
     public char display()
     {
-        return visited && !isBlocking() ? '+' : _c;
+        /*
+        if(visited)
+        {
+            //String s = ((int)cost)+"";
+            //return s.charAt(s.length()-1);
+            return (char)((int)cost + 'a');
+        }
+        else
+            return _c;
+        */
+        return onPath ? 'o' : (visited && !isBlocking() ? '+' : _c);
     }
 
     public boolean isBlocking()
@@ -53,6 +64,6 @@ public class LabyrinthPoint
     
     public float value()
     {
-        return cost + h;
+        return isGoal() ? -100 : (cost + h);
     }
 }

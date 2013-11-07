@@ -17,6 +17,7 @@ public class Labyrinth
                 if(_points[y][x].isStart())
                 {
                     _start = _points[y][x];
+                    _start.cost = 0;
                 }
                 if(_points[y][x].isGoal())
                 {
