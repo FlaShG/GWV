@@ -32,6 +32,14 @@ public class LabyrinthPathfinderAStar extends LabyrinthPathfinder
 
             //if(point.isBlocking()) continue;
 
+            if(point.isTeleporter() && !point.teleportTarget.visited && !point.teleportTarget.isBlocking())
+            {
+                point.teleportTarget.cost = point.cost + 1;
+                point.teleportTarget.visited = true; 
+                setHFor(point.teleportTarget);
+                pq.add(point.teleportTarget);
+            }
+            
             if(!point.north.visited && !point.north.isBlocking())
             {
                 point.north.cost = point.cost + 1;
@@ -76,7 +84,7 @@ public class LabyrinthPathfinderAStar extends LabyrinthPathfinder
             boolean startFound = false;
             while(!startFound)
             {
-                current = getPointWithLowestCostThatIsNotOnPath(current.west, current.east, current.north, current.south);
+                current = getPointWithLowestCostThatIsNotOnPath(current.west, current.east, current.north, current.south, current.teleportTarget);
                 path.addPoint(current);
                 current.onPath = true;
                 if(Main.debug) System.out.println(_labyrinth);
@@ -93,20 +101,9 @@ public class LabyrinthPathfinderAStar extends LabyrinthPathfinder
     {
         LabyrinthPoint result = null;
         float bestCost = Float.MAX_VALUE;
-
-        boolean startfound = false;
-        for(int i = 0; i < points.length; ++i)
-        {
-            if(points[i].isStart()) startfound = true;
-        }
         
         for(int i = 0; i < points.length; ++i)
         {
-            if(startfound)
-            {
-                System.out.println((points[i].isStart())+": "+points[i].cost);
-            }
-            
             if(points[i] != null && !points[i].onPath && points[i].cost < bestCost)
             {
                 result = points[i];

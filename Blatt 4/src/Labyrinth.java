@@ -8,20 +8,36 @@ public class Labyrinth
     
     public Labyrinth(char[][] data)
     {
+        LabyrinthPoint[] teleportBuddies = new LabyrinthPoint[10];
+        
         _points = new LabyrinthPoint[data.length][data[0].length];
         for(int y = 0; y < data.length; ++y)
         {
             for(int x = 0; x < data[y].length; ++x)
             {
-                _points[y][x] = new LabyrinthPoint(data[y][x], new Vector2(x,y));
-                if(_points[y][x].isStart())
+                LabyrinthPoint point = new LabyrinthPoint(data[y][x], new Vector2(x,y));
+                _points[y][x] = point;
+                
+                if(point.isStart())
                 {
-                    _start = _points[y][x];
+                    _start = point;
                     _start.cost = 0;
                 }
-                if(_points[y][x].isGoal())
+                if(point.isGoal())
                 {
-                    _goal = _points[y][x];
+                    _goal = point;
+                }
+                if(point.isTeleporter())
+                {
+                    if(teleportBuddies[point.getTeleporterNumber()] == null)
+                    {
+                        teleportBuddies[point.getTeleporterNumber()] = point;
+                    }
+                    else
+                    {
+                        teleportBuddies[point.getTeleporterNumber()].teleportTarget = point;
+                        point.teleportTarget = teleportBuddies[point.getTeleporterNumber()];
+                    }
                 }
             }
         }
