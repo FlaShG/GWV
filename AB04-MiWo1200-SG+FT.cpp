@@ -56,5 +56,7 @@ void zeige_labyrinth(void)
 //Aufgabe 2: Methode, die per Breitensuche einen Pfad zum Zielpunkt 's' findet.
 int pfad_finden_a_star(int x, int y)
 {
+    
+
     return 0;
 }
