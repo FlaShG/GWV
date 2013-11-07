@@ -16,7 +16,7 @@ char labyrinth[ZEILEN][SPALTEN] = {
     "x      xxx         x",
     "x      x xxxxx     x",
     "x  s     x         x",
-    "x      x xxxxxxxxxxx",
+    "x      x x xxxxxxxxx",
     "x xx xxxxx         x",
     "x     x       g    x",
     "x     x            x",
