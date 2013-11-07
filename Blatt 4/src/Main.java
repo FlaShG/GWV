@@ -8,6 +8,7 @@ public class Main
         pathfindingOn("data.txt");
         pathfindingOn("data_blocked.txt");
         pathfindingOn("data_teleport.txt");
+        pathfindingOn("data_wtf.txt");
     }
     
     private static void pathfindingOn(String filename)
