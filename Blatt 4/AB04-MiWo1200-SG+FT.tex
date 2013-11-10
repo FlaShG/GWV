@@ -1,0 +1,33 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{graphics,graphicx}
+\usepackage{pstricks,pst-node,pst-tree}
+%opening
+\title{GWV Aufgabenblatt 4}
+\author{Sascha Graef \& Felix Templin}
+
+\begin{document}
+
+\maketitle
+
+
+
+\section*{Aufgabe 1}
+Unsere Heuristik verwendet eine Messung des Restabstandes zum Ziel über die Manhattan-Distanz sowie eine
+Kostenberechnung, die die Kosten des bisher zurückgelegten Pfades berücksichtigt.
+Wir haben uns für die Manhattan-Distanz entschieden, da wir so eine einfache Berechnungsgrundlage ohne float-Werte haben.
+\section*{Aufgabe 2}
+Unsere Suche versucht zunächst, einen Pfad zum Ziel zu finden und terminiert, wenn dies unmöglich ist.
+Dies wird dadurch sichergestellt, dass bereits besuchte Felder markiert werden.
+\section*{Aufgabe 3}
+Die Heuristik wird dadurch angepasst, dass, wenn ein Teleporterpunkt in der Frontier auftaucht, der Abstand zum Ziel nicht von diesem
+Punkt, sondern von seinem Gegenstück (in der Implementation Buddy genannt) aus berechnet wird.
+\section*{Aufgabe 4}
+\textbf{Tiefensuche:} Bei der Tiefensuche wächst der Zeitaufwand exponentiell mit der Größe des zu druchsuchenden Bereiches, während der Platzaufwand linear wächst. 
+Der Frontier werden immer nur die Nachfolger des momentanen Knotens geladen, daher wächst der Speicherbedarf linear.\\
+\textbf{Breitensuche:} Der Zeitaufwand der Breitensuche entspricht der der Tiefensuche , während der Platzaufwand höher ist.
+Das kommt daher, dass wir eine Queue verwenden und keinen Stack wie bei der Tiefensuche. So haben wir mehr Elemente in der Frontier.\\
+\textbf{Suche mit A*:} Der Zeitaufwand ist in diesem Beispiel exponentiell. 
+
+\end{document}
