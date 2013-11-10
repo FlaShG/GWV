@@ -22,22 +22,14 @@ public class LabyrinthPoint
         _c = c;
         this.position = position;
     }
-    
+    /**
+     * Zeigt uns den kürzsten Weg vom Start- zum Zielpunkt.
+     */
     public char display()
     {
-        /*
-        if(visited)
-        {
-            //String s = ((int)cost)+"";
-            //return s.charAt(s.length()-1);
-            return (char)((int)cost + 'a');
-        }
-        else
-            return _c;
-        */
         return onPath ? 'o' : (visited && !isBlocking() ? '+' : _c);
     }
-
+    
     public boolean isBlocking()
     {
         return _c == 'x';
@@ -52,12 +44,16 @@ public class LabyrinthPoint
     {
         return _c == 's';
     }
-    
+    /*
+     * Stellt fest, ob der aktuelle Punkt ein Teleporter ist.
+     */
     public boolean isTeleporter()
     {
         return _c >= 48 && _c < 48+10;
     }
-    
+    /*
+     * Stellt fest, um welchen Teleporter es sich handelt.
+     */
     public int getTeleporterNumber()
     {
         return _c - 48;

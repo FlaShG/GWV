@@ -1,4 +1,7 @@
-
+/**
+ *Ermittelt im momentan verwendeten Labyrinth die Positionen des Starts, des Ziels, sowie der Teleporter
+ *zur weiteren Verwendung.
+ */
 public class Labyrinth
 {
     private LabyrinthPoint[][] _points;
@@ -63,7 +66,9 @@ public class Labyrinth
     {
         return _points.length;
     }
-    
+    /**
+     * Bestimmt die Position des aktuellen Punktes
+     */
     public LabyrinthPoint getPoint(int x, int y) throws Exception
     {
         if(x < 0 || x >= getWidth()

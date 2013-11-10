@@ -1,4 +1,7 @@
-
+/*
+ * Klasse zur Berechnung des Restabstandes zum Ziel.
+ * Es besteht die Möglichkeit, die Eulersche Distanz oder die Manhattan-Distanz zu berechnen.
+ */
 public class Vector2
 {
     public int x;

@@ -1,7 +1,9 @@
 import java.util.LinkedList;
 import java.util.List;
 
-
+/*
+ * Angepasste Priority-Queue für den Einsatz in unserer Suche.
+ */
 public class LabyrinthPriorityQueue
 {
     List<LabyrinthPoint> _points;

@@ -1,3 +1,6 @@
+/**
+ * A*-Suche im momentanen Labyrinth.
+ */
 public class LabyrinthPathfinderAStar extends LabyrinthPathfinder
 {
     public LabyrinthPathfinderAStar(Labyrinth labyrinth)
@@ -18,9 +21,6 @@ public class LabyrinthPathfinderAStar extends LabyrinthPathfinder
         while(!pq.isEmpty())
         {
             LabyrinthPoint point = pq.poll();
-
-            //if(point.visited) continue;
-            //point.visited = true;
             
             if(Main.debug) System.out.println(_labyrinth);
 
@@ -29,8 +29,6 @@ public class LabyrinthPathfinderAStar extends LabyrinthPathfinder
                 path = new LabyrinthPath();
                 break;
             }
-
-            //if(point.isBlocking()) continue;
 
             if(point.isTeleporter() && !point.teleportTarget.visited && !point.teleportTarget.isBlocking())
             {
@@ -72,8 +70,6 @@ public class LabyrinthPathfinderAStar extends LabyrinthPathfinder
                 pq.add(point.east);
             }
         }
-
-        //if(true) return path;
         
         if(path != null)
         {
@@ -117,6 +113,5 @@ public class LabyrinthPathfinderAStar extends LabyrinthPathfinder
     protected void setHFor(LabyrinthPoint point)
     {
         point.h = point.manhattanDistanceTo(_labyrinth.getGoal());
-        // point.h = point.eulerDistanceTo(_labyrinth.getGoal());
     }
 }

@@ -1,3 +1,7 @@
+/**
+ * Liest die .txt Dateien aus und zeigt sie auf der Konsole an.
+ */
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
@@ -32,7 +36,7 @@ public final class LabyrinthDataLoader
         }
         catch(Exception e)
         {
-            System.err.println("Holy sweet Jesus! Something went terribly wrong, run!!!");
+            System.err.println("Something went wrong!");
         }
         
         return result;

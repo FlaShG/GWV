@@ -1,3 +1,8 @@
+/**
+ * 
+ * Um Portale erwiterte a*-Suche.
+ *
+ */
 
 public class LabyrinthPathfinderAStarWithPortals extends LabyrinthPathfinderAStar
 {
