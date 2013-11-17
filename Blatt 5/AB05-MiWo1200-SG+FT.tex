@@ -1,0 +1,83 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{graphics,graphicx}
+\usepackage{pstricks,pst-node,pst-tree}
+%opening
+\title{GWV Aufgabenblatt 5}
+\author{Sascha Graef \& Felix Templin}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+\textbf{(a)}
+\begin{itemize}
+ \item \textbf{Left-Arc:} Hiermit wird eine Kante vom vordersten Wort in der Queue (W) zum Obersten Objekt des Stacks (S) gezogen, wenn die gegebenen Regeln eine solche Verbindung 
+ zulassen und die Kante noch nicht in der Menge der Kanten (A) vorkommt. Das oberste Objekt von S wird durch das vorderste Objekt von W ersetzt.
+ \item \textbf{Right-Arc:} Hiermit wird eine Kante vom obersten Objekt von S zum vordersten Objekt von W gezogen, wenn die gegebenen Regeln eine solche Verbindung 
+ zulassen und die Kante noch nicht in A vorkommt. Das vorderste Objekt von W wird auf den Stack gelegt.
+ \item \textbf{Reduce:} Wenn das oberste Objekt von S bereits einen head hat, so kann es mit Reduce entfernt werden (pop). Dies ist notwendig, wenn ein head mehrere Abhängigkeiten
+ nach rechts hat und daher der Platz oben auf dem Stack freigemacht werden muss.
+ \item \textbf{Shift:} Legt das vorderste Objekt von W auf den Stack. 
+\end{itemize}
+\textbf{(b)}
+Der Parsing-Algorithmus terminiert, wenn die Queue W leer ist.\\ \\
+\textbf{(c)}
+\begin{itemize}
+ \item \textbf{Single head:} Jeder Knoten des Graphen darf von Maximal einem anderen Knoten abhängen, ihn also als head haben.
+ \item \textbf{Acyclic:} Der Graph darf keine Zyklen enthalten, d.h. Zwei Knoten dürfen sich nicht gegenseitig, auch nicht auf Umwegen, als head haben. 
+ \item \textbf{Connected:} Der Graph muss zusammenhängend sein, dass heißt, dass ein Knoten den transitiven Kopf aller anderen Knoten bildet.
+ \item \textbf{Projective:} Der Graph ist projektiv, wenn alle abhängigen Knoten benachbart zu ihrem head sind. Das heißt, dass kein Knoten zwischen einem head und einem von ihm 
+ abhängigen Knoten stehen darf, der nicht entweder vom head oder einem vom head abhängigen Knoten abhängt. 
+\end{itemize}
+\newpage
+\noindent \textbf{(d)} Wir werden hier Beispielsätze nehmen, da dies weniger Platz in Anspruch nimmt.
+\begin{itemize}
+ \item \textbf{Single head:} Beispiel: \dq Sie und ich haben eine gemeinsame Wohnung.\dq Hier würden sich sowohl der Knoten \dq Sie \dq als auch der Knoten \dq ich \dq auf \dq haben \dq
+ beziehen.
+ \item \textbf{Acyclic:}
+ \item \textbf{Connected:} \dq Der Mann ist eine Giraffe Tisch.\dq \dq Tisch \dq ist vom Rest des Graphen getrennt.
+ \item \textbf{Projective:} \dq Der Mann isst eine Giraffe, wobei er laut schmatzt. \dq er \dq ist im Graphen zu nicht graphenbenachbart mit Mann. 
+\end{itemize}
+
+\section*{Aufgabe 2}
+W =  Der Mann isst eine Giraffe. 
+\begin{itemize}
+ \item[]  $\langle$ \textbf{nil}, Der Mann isst eine Giraffe, $\emptyset$ $\rangle$
+ \item[$\underrightarrow{s}$] $\langle$ Der, Mann isst eine Giraffe, $\emptyset$ $\rangle$
+ \item[$\underrightarrow{ra}$] $\langle$ Mann Der, isst eine Giraffe, {(Der, Mann)} $\rangle$
+ \item[$\underrightarrow{la}$] $\langle$ Der, isst eine Giraffe, {(Der, Mann)(isst, Mann)} $\rangle$
+ \item[$\underrightarrow{r}$] $\langle$ \textbf{nil}, isst eine Giraffe, {(Der, Mann)(isst, Mann)} $\rangle$
+ \item[$\underrightarrow{s}$] $\langle$ isst, eine Giraffe, {(Der, Mann)(isst, Mann)} $\rangle$
+ \item[$\underrightarrow{s}$] $\langle$ eine isst, Giraffe, {(Der, Mann)(isst, Mann)} $\rangle$
+ \item[$\underrightarrow{la}$] $\langle$ isst, Giraffe, {(Der, Mann)(isst, Mann),(Giraffe, eine)} $\rangle$
+ \item[$\underrightarrow{ra}$] $\langle$ Giraffe isst, \textbf{nil}, {(Der, Mann)(isst, Mann),(Giraffe, eine)(isst, Giraffe)} $\rangle$
+\end{itemize}
+
+\section*{Aufgabe 3}
+\begin{itemize}
+ \item Die search states sind Tripel aus den in Aufgabe 2 aufgeführten Variablen S, W und A.
+ \item Der start state ist demnach $\langle$ \textbf{nil}, Der Mann isst eine Giraffe, $\emptyset$ $\rangle$
+ \item Ein end state ist jeder Zustand, in dem die Queue W leer ist, zum Beispiel $\langle$ Giraffe isst, \textbf{nil}, {(Der, Mann)(isst, Mann),(Giraffe, eine)(isst, Giraffe)} $\rangle$
+ \item Die state transitions sind Left-Arc, Right-Arc, Reduce und Shift, wobei anzumerken ist, dass Reduce niemals zum Endzustand führen kann (siehe oben)
+ \item Ja, allerdings wäre der search space schon durch die vielen Übergänge und Abschlussmöglichkeiten sehr unübersichtlich
+ \item Die Vorteile liegen darin, dass wir bereits vor dem Parsing, zum Beispiel durch Pruning mit den geltenden grammatikalischen Regeln, den Suchbaum stark einschränken können.
+ So sparen wir uns im Endeffekt Zeit- und Speicheraufwand
+ \item Die bereits bekannten Suchstrategien sind aus dem selben Grund schlechter für die Suche nach dem Sinn geeignet aus dem es auch nicht sinnvoll ist, alle möglichen Graphen 
+ aufzustellen und dann den besten heraus zu suchen.
+ \item Zunächst wäre es sinnvoll, einen Suchbaum aufzustellen und unnütze Zustände heraus zu kürzen, danach könnte man zum Beispiel eine A*-Suche durchführen, die nach dem kürzesten Weg
+ zu einem sinnvollen Endzustand sucht.
+\end{itemize}
+
+ 
+
+
+
+
+
+
+
+\end{document}
