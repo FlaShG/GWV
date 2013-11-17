@@ -6,7 +6,7 @@
 \usepackage{pstricks,pst-node,pst-tree}
 %opening
 \title{GWV Aufgabenblatt 5}
-\author{Sascha Graef \& Felix Templin}
+\author{Sascha Graeff \& Felix Templin}
 
 \begin{document}
 
@@ -29,18 +29,18 @@ Der Parsing-Algorithmus terminiert, wenn die Queue W leer ist.\\ \\
 \begin{itemize}
  \item \textbf{Single head:} Jeder Knoten des Graphen darf von Maximal einem anderen Knoten abhängen, ihn also als head haben.
  \item \textbf{Acyclic:} Der Graph darf keine Zyklen enthalten, d.h. Zwei Knoten dürfen sich nicht gegenseitig, auch nicht auf Umwegen, als head haben. 
- \item \textbf{Connected:} Der Graph muss zusammenhängend sein, dass heißt, dass ein Knoten den transitiven Kopf aller anderen Knoten bildet.
+ \item \textbf{Connected:} Der Graph muss zusammenhängend sein, das heißt, dass ein Knoten den transitiven Kopf aller anderen Knoten bildet.
  \item \textbf{Projective:} Der Graph ist projektiv, wenn alle abhängigen Knoten benachbart zu ihrem head sind. Das heißt, dass kein Knoten zwischen einem head und einem von ihm 
  abhängigen Knoten stehen darf, der nicht entweder vom head oder einem vom head abhängigen Knoten abhängt. 
 \end{itemize}
 \newpage
 \noindent \textbf{(d)} Wir werden hier Beispielsätze nehmen, da dies weniger Platz in Anspruch nimmt.
 \begin{itemize}
- \item \textbf{Single head:} Beispiel: \dq Sie und ich haben eine gemeinsame Wohnung.\dq Hier würden sich sowohl der Knoten \dq Sie \dq als auch der Knoten \dq ich \dq auf \dq haben \dq
+ \item \textbf{Single head:} Beispiel: ``Sie und ich haben eine gemeinsame Wohnung.'' Hier würden sich sowohl der Knoten ``Sie'' als auch der Knoten ``ich'' auf ``haben''
  beziehen.
  \item \textbf{Acyclic:}
- \item \textbf{Connected:} \dq Der Mann ist eine Giraffe Tisch.\dq \dq Tisch \dq ist vom Rest des Graphen getrennt.
- \item \textbf{Projective:} \dq Der Mann isst eine Giraffe, wobei er laut schmatzt. \dq er \dq ist im Graphen zu nicht graphenbenachbart mit Mann. 
+ \item \textbf{Connected:} ``Der Mann ist eine Giraffe Tisch.'' ``Tisch'' ist vom Rest des Graphen getrennt.
+ \item \textbf{Projective:} ``Der Mann isst eine Giraffe, wobei er laut schmatzt.'' ``er'' ist im Graphen zu nicht graphenbenachbart mit Mann. 
 \end{itemize}
 
 \section*{Aufgabe 2}
