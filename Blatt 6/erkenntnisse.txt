@@ -1,0 +1,29 @@
+domain consistency
+    Alle direkt auzuschließenden Werte für Variablen sind nicht Teil der
+    Menge der möglichen Werte der Variablen.
+
+    z.B.
+    x element {1,2,3,4}
+    <x, x > 2>
+    => constraint nicht domain consistent
+
+    macht man aber
+    x element {3,4}
+    daraus, so wird der constraint domain consistent.
+
+
+arc consistency
+    Alle durch Betrachtung der Wertebereiche verknüpfter Variablen
+    auszuschließenden Werte sind nicht im Werteberich.
+    
+    z.B.
+    x element {1,2,3,4}
+    y element {1,2,3,4}
+    <x, x < y>
+    => arc nicht arc consistent
+    
+    macht man aber
+    x element {1,2,3} (nicht y verändern, Arc betrachtet ja x)
+    daraus, so wird die arc arc consistent.
+    
+    Ein Netzwerk ist arc consistent, wenn alle arcs arc consistent sind.
