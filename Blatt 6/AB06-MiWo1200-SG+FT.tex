@@ -11,11 +11,29 @@
 \maketitle
 
 \section*{Aufgabe 1.1}
-Mit $c$ ist im Folgenden immer der Übertrag aus den niedrigstelligeren Additionen und ist entsprechend eine Variable mit dem Wertebereich $\{0,1\}$. $c*10$ ist der Übertrag aus der aktuellen Addition und entsprechend im Wertebereich $\{0,10\}$.
+\textbf{(a)}
+$c$ ist im Folgenden die Übertragsfunktion. $c(n) = 1 \Leftrightarrow n \geq 10$, sonst $0$.
+ \begin{itemize}
+  \item $D + E = Y + (c(D+E) * 10)$
+  \item $N + R + c(D+E) = E + (c(N + R + c(D+E)) * 10)$
+  \item $E + O + c(N + R + c(D+E)) = N + (c(E + O + c(N + R + c(D+E))) * 10)$
+  \item $S + M + c(E + O + c(N + R + c(D+E))) = MO$
+ \end{itemize}
+\textbf{(b)}
 \begin{itemize}
-  \item $D + E = Y + (c*10)$
-  \item $N + R + c = E$
-  \item $S + M + c = MO$
+  \item Erster Versuch: Trial\&Error, also Backtracking. Man kommt nicht besonders weit damit, da man als Mensch nur sehr langsam ausprobieren kann. Außerdem ist es schwierig, sich zu merken, was man schon ausprobiert hat.
+  \item Zweiter Versuch: Alle Anfangs-, Mittel- und Endbuchstaben aufschreiben. Das Wort in der linken Spalte darf nur aus Anfangsbuchstaben bestehen, da sonst in den kreuzenden Zeilen Probleme auftreten.
+          Entsprechendes für die zweite und die dritte Spalte, und dann übertragen auch auf die Zeilen.
+          Mit der eingeschränkten Wortzahl wird dann wieder per Backtracking ausprobiert.\\
+          Unter Zuhilfenahme weiterer logischer Ansätze, wie die Spiegelbarkeit des Feldes entlang seiner Diagonalen, führte dieser Ansatz, nachdem die erste Phase abgeschlossen war, innerhalb weniger Minuten zu einem Ergebnis:
+
+\begin{tabular}{ | l | l | l | }
+\hline
+b & e & e \\ \hline
+o & a & f \\ \hline
+a & r & t \\ \hline
+\end{tabular}
 \end{itemize}
+\textbf{(c)}
 
 \end{document}
