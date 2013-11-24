@@ -34,6 +34,44 @@ o & a & f \\ \hline
 a & r & t \\ \hline
 \end{tabular}
 \end{itemize}
-\textbf{(c)}
-
+\newpage
+\noindent \textbf{(c) }
+Wir ordnen den neun Feldern die Großbuchstaben A bis I zu.
+Domain consistency: Bei den Feldern, die den ersten Buchstaben eines Wortes halten können (also A,B,C,D,G) werden alle Buchstaben gestrichen,
+die nicht der erste Buchstabe eines der Wörter sein können.\\
+Daraus resultiert: 
+A, B, C, D, G = \{a, b, e, f, l, o, r, t\}
+Danach werden bei allen Feldern, die einen zweiten Buchstaben der gegebenen Wörter halten können (also B,D,E,F,H) alle Buchstaben gestrichen, die nicht an zweiter 
+Stelle stehen können.
+Daraus resultiert: \\
+B, D = \{a, e, f, o, r\}\\
+E, F, H = \{a, d, e, f, g, i, n, o, p, r, s, u, w, y\}\\
+Danach werden bei allen Feldern, die einen dritten Buchstaben der gegebenen Wörter halten können (also C,F,G,H,I) alle Buchstaben gestrichen, die nicht an dritter 
+Stelle stehen können.
+Daraus resultiert:\\
+C, G = \{a, e, f, l, o, r, t\}\\
+F, H = \{a, e, f, o, r\}\\
+I =    \{a, d, e, f, h, k, l, m, n, o, r, t\}\\
+Damit ist domain cositency hergestellt, die Möglichen Belegungen der Felder sind:\\
+A = \{a, b, e, f, l, o, r, t\}\\
+B, D = \{a, e, f, o, r\}\\
+C, G = \{a, e, f, l, o, r, t\}\\
+F, H = \{a, e, f, o, r\}\\
+I    = \{a, d, e, f, h, k, l, m, n, o, r, t\}\\
+Nun können wir damit beginnen, constraints zu berücksichtigen, die mehr als ein Feld betreffen.\\
+Die constraints müssen so konstruiert sein, dass zum einen nur Wörter verwendet werden, die auch in der Wörtermenge vorkommen, 
+zum anderen dürfen sich die Buchstaben in den drei in einer Zeile oder Spalte liegenden Felder nicht 
+widersprechen. W sei hier die Menge der möglichen Wörter\\
+So kommt je ein constraint mit den Skopus \{A,B,C\}, \{A,D,G\}, \{B,E,H\}, \{C,F,I\}, \{D,E,F\}, \{G,H,I\} zustande.
+Das constraint besteht darin, dass die drei Elemente von links nach rechts oder oben nach unten verkettet ein Wort aus der Wortmenge 
+W ergeben müssen, zum Beispiel: A + B + C = Element aus W (b+e+e = bee).\\
+Auf diese weise ist jedes Feld an zwei constraints gebunden, die sich auf mehr als ein Feld beziehen.
+Für die Auswertung dieser constraints ist es notwendig, dass wir ein Wort wählen und testen, ob alle Contraints erfüllt werden, da 
+wir davon ausgehen müssen, dass es mehr als eine richtige Lösung gibt.
+Also wählen wir das Wort ``bee'' für den Skopus \{A,B,C\}.
+Damit schränken wir die möglichen Wörter für die Tripel \{A,D,G\} auf \{bad, bag, bat, boa\} und das Tripel \{B,E,H\} und \{C,H,I\} auf 
+\{ear, eel, eft\} ein. Da wir nur ein Wort haben, das mit ``o'' beginnt, wählen wir nun für \{A,D,G\} das Wort ``boa'', damit wir ``o'' als Anfangsbuchstaben 
+verwenden können. Daraus ergibt sich, dass für \{D,E,F\} nur noch ``oaf'' in Frage kommt. Diese Schritte lassen bei 
+\{B,E,H\} nur noch ``ear'' und bei \{C,F,I\} nur noch ``eft'' zu. Im letzten Schritt müssen wir nur noch ablesen, dass das einzig mögliche Wort für
+\{G,H,I\} ``art'' lautet. Damit ist die oben dargestellte Lösung hergeleitet.
 \end{document}
