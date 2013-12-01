@@ -12,16 +12,16 @@
 
 \section*{Aufgabe 1.1 (CSI Stellingen)}
 \begin{itemize}
-  \item assumable gardener\_worked
-  \item assumable butler\_worked
-  \item default gardener\_is\_dirty\_when\_has\_been\_working
-  \item default butler\_is\_dirty\_when\_has\_been\_working
-  \item default gardener\_did\_not\_murder\_when\_has\_been\_working
-  \item default butler\_did\_not\_murder\_when\_has\_been\_working
-  \item gardener\_dirty $\leftrightarrow$ gardener\_worked AND gardener\_is\_dirty\_when\_has\_been\_working
-  \item butler\_dirty $\leftrightarrow$ butler\_worked AND butler\_is\_dirty\_when\_has\_been\_working
-  \item gardener\_is\_murderer $\leftrightarrow$ butler\_worked AND NOT gardener\_worked
-  \item butler\_is\_murderer $\leftrightarrow$ gardener\_worked AND NOT butler\_worked
+  \item $assumable \; gardener\_worked$
+  \item $assumable \; butler\_worked$
+  \item $default \; gardener\_is\_dirty\_when\_has\_been\_working$
+  \item $default \; butler\_is\_dirty\_when\_has\_been\_working$
+  \item $defaul \;t gardener\_did\_not\_murder\_when\_has\_been\_working$
+  \item $default \; butler\_did\_not\_murder\_when\_has\_been\_working$
+  \item $gardener\_dirty \leftrightarrow gardener\_worked \wedge gardener\_is\_dirty\_when\_has\_been\_working$
+  \item $butler\_dirty \leftrightarrow butler\_worked \wedge butler\_is\_dirty\_when\_has\_been\_working$
+  \item $gardener\_is\_murderer \leftrightarrow butler\_worked \wedge \neg gardener\_worked$
+  \item $butler\_is\_murderer \leftrightarrow gardener\_worked \wedge \neg butler\_worked$
 \end{itemize}
 Wir beobachten ``butler\_dirty'' und schließen daraus u.A.: ``butler\_worked''
 Da wir das Gegenteil von ``gardener\_dirty'' beobachten, folgern wir, dass entweder ``gardener\_worked'' oder ``gardener\_is\_dirty\_when\_has\_been\_working'' nicht der Wahrheit entspricht. Letzteres ist ein default für uns.
@@ -33,20 +33,20 @@ Sollte der default ``gardener\_is\_dirty\_when\_has\_been\_working'' der Wahrhei
 Wir verwenden bei dieser Aufgabe Vorwissen, da wir im Vorfeld Herangehenswiesen ohne Vorwissen als ungeeignet eingestuft haben. \\
 efr = electronic fuel regulation (aka electronic euel regulation)
 \begin{itemize}
-  \item assumable battery\_ok
-  \item assumable ignition\_key\_ok
-  \item assumable efr\_ok
-  \item assumable starter\_ok
-  \item assumable engine\_ok
-  \item assumable filter\_ok
-  \item assumable fuel\_pump\_ok
-  \item assumable fuel\_tank\_ok
-  \item noise1 $\leftrightarrow$ starter\_ok AND battery\_ok AND ignition\_key\_ok
-  \item noise2 $\leftrightarrow$ fuel\_pump\_ok AND efr\_ok AND battery\_ok AND fuel\_tank
-  \item noise3 $\leftrightarrow$ engine\_ok AND noise1 AND noise2 AND filter\_ok
-  \item no\_noises $\leftrightarrow$ NOT noise1 AND NOT noise2 AND NOT noise3
-  \item only\_noise1 $\leftrightarrow$ noise1 AND NOT noise2 AND NOT noise3
-  \item only\_noise2 $\leftrightarrow$ noise2 AND NOT noise1 AND NOT noise3
-  \item only\_noise1\_and\_noise2 $\leftrightarrow$ noise1 AND noise2 AND NOT noise3
+  \item $assumable \; battery\_ok$
+  \item $assumable \; ignition\_key\_ok$
+  \item $assumable \; efr\_ok$
+  \item $assumable \; starter\_ok$
+  \item $assumable \; engine\_ok$
+  \item $assumable \; filter\_ok$
+  \item $assumable \; fuel\_pump\_ok$
+  \item $assumable \; fuel\_tank\_ok$
+  \item $noise1 \leftrightarrow starter\_ok \wedge battery\_ok \wedge ignition\_key\_ok$
+  \item $noise2 \leftrightarrow fuel\_pump\_ok \wedge efr\_ok \wedge battery\_ok \wedge fuel\_tank$
+  \item $noise3 \leftrightarrow engine\_ok \wedge noise1 \wedge noise2 \wedge filter\_ok$
+  \item $no\_noises \leftrightarrow \neg noise1 \wedge \neg noise2 \wedge \neg noise3$
+  \item $only\_noise1 \leftrightarrow noise1 \wedge \neg noise2 \wedge \neg noise3$
+  \item $only\_noise2 \leftrightarrow noise2 \wedge \neg noise1 \wedge \neg noise3$
+  \item $only\_noise1\_and\_noise2 \leftrightarrow noise1 \wedge noise2 \wedge \neg noise3$
 \end{itemize}
 \end{document}
