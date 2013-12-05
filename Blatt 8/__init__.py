@@ -1,12 +1,26 @@
 import codecs
 import re
+import random
     
-filename = "nicht_heise.txt"
+filename = "heise.txt"
     
     
 dictionary = dict()
 previous_word = ""
     
+def add_to_dictionary(word, next_word):
+    if word in dictionary:
+        dictionary[word].append(next_word)
+    else:
+        dictionary[word] = [next_word]
+
+def get_random_word(p):
+    rand = random.random()
+    akku = 0
+    for word in p:
+        akku += p[word]
+        if akku >= rand:
+            return word
 
 #map all following words to all words
 f = codecs.open(filename, encoding='utf-8') 
@@ -19,6 +33,7 @@ for line in f:
             previous_word = word
         else:
             add_to_dictionary(previous_word, word)
+            previous_word = word
 
 f.close()
 
@@ -38,31 +53,28 @@ for word in dictionary:
         p[follower] /= wordcount
     
     dictionary[word] = p
+    
 
 
+sentence_length = 8
 user_input = input("word please:")
-while input("word please:") != "":
-    word = user_input
-    for i in range(0,5):
-        print(word)
-        word = get_random_word(dictionary[word])
-    user_input = input("word please:")
+while user_input != "":
+    parts = str.split(user_input, " ")
+    word = parts[0]
+    if len(parts) > 1:
+        try:
+            sentence_length = int(parts[1])
+        except: pass
+        
+    for i in range(0,sentence_length):
+        print(word, end=" ")
+        try:
+            word = get_random_word(dictionary[word])
+        except: break
+    user_input = input("\n\nWord please:")
+    
+    
 
-
-
-def add_to_dictionary(word, next_word):
-    if word in dictionary:
-        dictionary[word].append(next_word)
-    else:
-        dictionary[word] = [next_word]
-
-def get_random_word(p):
-    rand = random.uniform(0.0, 1.0)
-    akku = 0
-    for word in p:
-        akku += p[word]
-        if akku >= rand:
-            return word
         
         
         
