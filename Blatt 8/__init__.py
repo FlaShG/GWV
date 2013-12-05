@@ -2,7 +2,7 @@ import codecs
 import re
 import random
     
-filename = "heise.txt"
+filename = "heiseticker-text.txt"
     
     
 dictionary = dict()
@@ -22,6 +22,9 @@ def get_random_word(p):
         if akku >= rand:
             return word
 
+            
+print("Scanning words...")
+
 #map all following words to all words
 f = codecs.open(filename, encoding='utf-8') 
 for line in f:
@@ -36,6 +39,9 @@ for line in f:
             previous_word = word
 
 f.close()
+
+
+print("Calculating propabilities...")
 
 
 #calculate propabilities
@@ -55,9 +61,13 @@ for word in dictionary:
     dictionary[word] = p
     
 
+print("Done!")
+print("You may add a number after your start word to set the sentence length.")
+print("Example: \"Wurst 6\" for a 6-words sentence that starts with \"Wurst\".")
+    
 
 sentence_length = 8
-user_input = input("word please:")
+user_input = input("\nWord please:")
 while user_input != "":
     parts = str.split(user_input, " ")
     word = parts[0]
