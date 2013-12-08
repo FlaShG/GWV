@@ -1,0 +1,50 @@
+
+
+smuggler
+bark
+fever
+sweat
+
+
+
+P(smuggler)   := 0.01
+=> P(NOT smuggler)  := 0.99
+
+P(bark | smuggler)            := 0.8
+P(bark | NOT smuggler)        := 0.05
+
+P(sweat | NOT fever AND NOT smuggler)   := 0
+P(sweat | fever AND NOT smuggler)       := 0.6
+P(sweat | smuggler AND NOT fever)       := 0.4
+P(sweat | smuggler AND fever)           := 0.8
+
+P(fever)                                := 0.013
+=> P(NOT fever)                         := 0,987
+
+
+
+
+P(bark) = P(bark | smuggler) * P(smuggler) + P(bark | NOT smuggler) * P(NOT smuggler)
+        = 0.8                * 0.01        + 0.05                   * 0.99
+        = 0.008                            + 0.0495
+        = 0.0575
+
+P(smuggler | bark) = P(bark | smuggler) * P(smuggler) / P(bark)
+                   = 0.8                * 0.01        / 0.0575
+                   = 0.139
+
+P(sweat) = P(sweat | NOT fever AND NOT smuggler) * P(NOT fever) * P(NOT smuggler)
+         + P(sweat | fever AND NOT smuggler)     * P(fever) * P(NOT smuggler)
+         + P(sweat | smuggler AND NOT fever)     * P(NOT fever) * P(smuggler)
+         + P(sweat | smuggler AND fever)         * P(fever) * P(smuggler)
+
+         = 0   * 0,987 * 0.99
+         + 0.6 * 0.013 * 0.99
+         + 0.4 * 0,987 * 0.01
+         + 0.8 * 0.013 * 0.01
+         
+         = 0 + 0.007722 + 0.003948 + 0.000104
+         = 0.011774
+
+//FIXME
+P(smuggler | sweat AND bark) = P(smuggler | sweat) + P(smuggler | bark)
