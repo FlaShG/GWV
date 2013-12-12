@@ -29,7 +29,7 @@ def get_random_word(p):
 print("Scanning words...")
 
 #map all following words to all words
-f = codecs.open(filename, encoding='utf-8') 
+f = codecs.open(filename, encoding='utf-8')
 for line in f:
     #remove \r\n
     word = re.sub("\r\n", lambda x: "", line)
@@ -85,12 +85,3 @@ while user_input != "":
             word = get_random_word(dictionary[word])
         except: break
     user_input = input("\n\nWord please:")
-    
-    
-
-        
-        
-        
-        
-        
-        

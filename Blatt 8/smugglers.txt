@@ -47,3 +47,24 @@ P(sweat) = P(sweat | NOT fever AND NOT smuggler) * P(NOT fever) * P(NOT smuggler
          = 0.011774
 
 
+P(sweat | smuggler) =   P(sweat | smuggler AND NOT fever)     * P(NOT fever) * P(smuggler)
+         	      + P(sweat | smuggler AND fever)         * P(fever) * P(smuggler)
+		    =   0.4 * 0,987 * 0.01
+                      + 0.8 * 0.013 * 0.01
+	            = 0.003948 + 0.000104
+		    = 0.004052
+
+P( smuggler | sweat) = P(sweat | smuggler) * P(smuggler) / P(sweat)
+		     = 0.004052 * 0.01 / 0.011774
+		     = 0.003441481
+
+P(smuggler AND sweat AND bark) = P(smuggler) * P(bark | smuggler) * P( sweat | smuggler) 
+			     = 0.01 * 0.8 * 0.004052
+			     = 0.000032416
+P(NOT smuggler AND sweat AND bark) = P( NOT smuggler) * P(bark | smuggler) * P( sweat | smuggler)
+				   = 0.99 * 0.8 * 0.004052
+				   = 0.003209184
+P(smuggler | sweat AND bark) = P(smuggler AND sweat AND bark) / (P(smuggler AND sweat AND bark) + P(NOT smuggler AND sweat AND bark))
+			     = 0.000032416 /  (0.000032416 + 0.003209184)
+			     = 0.01
+
