@@ -4,35 +4,42 @@ using System.IO;
 
 namespace HiddenMarkovModels
 {
-	class MainClass
-	{
-		public static void Main (string[] args)
-		{
-			var tagWords = new Dictionary<string, HashSet<string>>();
+    class MainClass
+    {
+        public static void Main (string[] args)
+        {
+            var tagWords = new TagDictionary();
 
-			try
-			{
-				var reader = new StreamReader("heiseticker-tags.txt");
+            try
+            {
+                var reader = new StreamReader("heiseticker-tags.txt");
 
-				while(!reader.EndOfStream)
-				{
-					//reader.ReadLine()
-				}
-			}
-			catch
-			{
-				Console.WriteLine("File not found.");
-				return;
-			}
+                while(!reader.EndOfStream)
+                {
+                    tagWords.Add(reader.ReadLine());
+                }
+            }
+            catch
+            {
+                Console.WriteLine("File not found.");
+                return;
+            }
+
+            string input;
+            do
+            {
+                input = Console.ReadLine();
+            }while(input != "exit");
 
 
-			/*
-			Console.Write("Enter a Word thing: ");
-			string input = Console.ReadLine();
-			Console.WriteLine("You said dat: "+input);
-			*/
-		}
 
-		//private 
-	}
+            /*
+            Console.Write("Enter a Word thing: ");
+            string input = Console.ReadLine();
+            Console.WriteLine("You said dat: "+input);
+            */
+        }
+
+        //private 
+    }
 }
