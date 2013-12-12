@@ -1,3 +1,6 @@
+# heiseticker-text.txt neben dieser Datei ablegen
+# starten mit "python markov.py"
+
 import codecs
 import re
 import random

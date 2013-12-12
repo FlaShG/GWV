@@ -46,5 +46,4 @@ P(sweat) = P(sweat | NOT fever AND NOT smuggler) * P(NOT fever) * P(NOT smuggler
          = 0 + 0.007722 + 0.003948 + 0.000104
          = 0.011774
 
-//FIXME
-P(smuggler | sweat AND bark) = P(smuggler | sweat) + P(smuggler | bark)
+
