@@ -27,6 +27,11 @@ namespace HiddenMarkovModels
                 //tagWords.Add(reader.ReadLine());
             }
         }
+
+        public string TagSentence(string sentence)
+        {
+            return sentence;
+        }
     }
 }
 

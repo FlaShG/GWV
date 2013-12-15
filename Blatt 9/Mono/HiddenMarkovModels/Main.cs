@@ -26,7 +26,7 @@ namespace HiddenMarkovModels
 				Console.Write("Enter Word: ");
                 input = Console.ReadLine();
 
-                Console.WriteLine(wordDictionary.GetAllTags(input));
+                Console.WriteLine(PoSTagger.TagSentence(input));
 				//Console.WriteLine(tagWords.GetRandomWordForTag(input));
 
             }while(input != "exit");
