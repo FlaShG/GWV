@@ -8,18 +8,16 @@ namespace HiddenMarkovModels
     {
         public static void Main (string[] args)
         {
-            var tagWords = new TagDictionary();
-
             try
             {
-                var reader = new StreamReader("heiseticker-tags.txt");
+				var reader = new StreamReader(@"heiseticker-tags.txt");
 
                 while(!reader.EndOfStream)
                 {
-                    tagWords.Add(reader.ReadLine());
+                    //tagWords.Add(reader.ReadLine());
                 }
             }
-            catch
+            catch(IOException)
             {
                 Console.WriteLine("File not found.");
                 return;
@@ -28,7 +26,11 @@ namespace HiddenMarkovModels
             string input;
             do
             {
+				Console.Write("Enter Tag: ");
                 input = Console.ReadLine();
+
+				//Console.WriteLine(tagWords.GetRandomWordForTag(input));
+
             }while(input != "exit");
 
 
