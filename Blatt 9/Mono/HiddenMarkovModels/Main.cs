@@ -8,7 +8,7 @@ namespace HiddenMarkovModels
     {
         public static void Main (string[] args)
         {
-            var wordDictionary = new WordDictionary();
+            var wordDictionary = new TagDictionary();
 
             try
             {
@@ -16,7 +16,7 @@ namespace HiddenMarkovModels
 
                 while(!reader.EndOfStream)
                 {
-                    wordDictionary.AddTagToWord(reader.ReadLine());
+                    wordDictionary.AddTag(reader.ReadLine());
                     //tagWords.Add(reader.ReadLine());
                 }
             }
@@ -32,7 +32,7 @@ namespace HiddenMarkovModels
 				Console.Write("Enter Word: ");
                 input = Console.ReadLine();
 
-                Console.WriteLine(wordDictionary.GetAllTagsForWord(input));
+                Console.WriteLine(wordDictionary.GetAllTags(input));
 				//Console.WriteLine(tagWords.GetRandomWordForTag(input));
 
             }while(input != "exit");

@@ -37,8 +37,9 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="WordDictionary.cs" />
     <Compile Include="ProbabilityDictionary.cs" />
+    <Compile Include="TagDictionary.cs" />
+    <Compile Include="WordTagDictionary.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
