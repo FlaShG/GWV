@@ -14,15 +14,6 @@ namespace HiddenMarkovModels
             dict = new Dictionary<string, ProbabilityDictionary<string>>();
         }
 
-        public void AddToTag(string line)
-        {
-            var split = line.Split(new char[]{'\t'}, 2);
-            if(split.Length == 2)
-            {
-                AddToTag(split[0].Trim (), split[1].Trim());
-            }
-        }
-
         public void AddToTag(string tag, string wordToAdd)
         {
             try

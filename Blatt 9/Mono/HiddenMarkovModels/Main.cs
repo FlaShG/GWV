@@ -24,7 +24,7 @@ namespace HiddenMarkovModels
             string input;
             do
             {
-				Console.Write("Enter Word: ");
+				Console.Write("Enter Sentence: ");
                 input = Console.ReadLine();
 
                 Console.WriteLine(tagger.TagSentence(input));
