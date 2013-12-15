@@ -8,12 +8,15 @@ namespace HiddenMarkovModels
     {
         public static void Main (string[] args)
         {
+            var wordDictionary = new WordDictionary();
+
             try
             {
 				var reader = new StreamReader(@"heiseticker-tags.txt");
 
                 while(!reader.EndOfStream)
                 {
+                    wordDictionary.AddTagToWord(reader.ReadLine());
                     //tagWords.Add(reader.ReadLine());
                 }
             }
@@ -26,9 +29,10 @@ namespace HiddenMarkovModels
             string input;
             do
             {
-				Console.Write("Enter Tag: ");
+				Console.Write("Enter Word: ");
                 input = Console.ReadLine();
 
+                Console.WriteLine(wordDictionary.GetTagsForWord(input));
 				//Console.WriteLine(tagWords.GetRandomWordForTag(input));
 
             }while(input != "exit");
