@@ -19,6 +19,14 @@ namespace HiddenMarkovModels
             rand = new Random();
         }
 
+        public ProbabilityDictionary(ProbabilityDictionary<T> original)
+        {
+            dict = original.dict;
+            Count = original.Count;
+            totalCount = original.totalCount;
+            rand = new Random();
+        }
+
         public void Add(T item)
         {
             try
@@ -30,6 +38,7 @@ namespace HiddenMarkovModels
                 dict.Add(item, 1);
                 ++Count;
             }
+
 
             ++totalCount;
         }
@@ -48,6 +57,21 @@ namespace HiddenMarkovModels
             }
 
             return default(T);
+        }
+
+        public T GetItemWithHighestProbablity()
+        {
+            KeyValuePair<T, int> max = new KeyValuePair<T, int>(default(T), 0);
+
+            foreach(var pair in dict)
+            {
+                if(pair.Value > max.Value)
+                {
+                    max = pair;
+                }
+            }
+
+            return max.Key;
         }
 
         public override string ToString()

@@ -6,7 +6,7 @@ namespace HiddenMarkovModels
 {
     public class TagDictionary
     {
-        //                    tag  , predecessor tags / words for that tag
+        //                    tag  ,  successor tags / words for that tag
         protected Dictionary<string, ProbabilityDictionary<string>> dict;
 
         public TagDictionary ()
@@ -24,6 +24,18 @@ namespace HiddenMarkovModels
             {
                 dict.Add(tag, new ProbabilityDictionary<string>());
                 dict[tag].Add(wordToAdd);
+            }
+        }
+
+        public ProbabilityDictionary<string> GetProbabilityDictionaryFor(string tag)
+        {
+            try
+            {
+                return new ProbabilityDictionary<string>(dict[tag]);
+            }
+            catch
+            {
+                return null;
             }
         }
 
