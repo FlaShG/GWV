@@ -19,6 +19,10 @@ namespace HiddenMarkovModels
 
             while(!reader.EndOfStream)
             {
+                var line = reader.ReadLine();
+
+
+
                 //wordDictionary.AddToTag(reader.ReadLine());
                 //tagWords.Add(reader.ReadLine());
             }
