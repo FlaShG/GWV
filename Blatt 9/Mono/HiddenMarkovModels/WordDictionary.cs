@@ -36,7 +36,38 @@ namespace HiddenMarkovModels
             }
         }
 
-        public string GetTagsForWord(string word)
+        public string GetTagForWord(string word, TagChains chains)
+        {
+            ProbabilityDictionary <string> possibleTags;
+            try
+            {
+                possibleTags = dict[word];
+            } catch {  }
+
+            if(possibleTags != null)
+            {
+                if(possibleTags.Count == 1)
+                {
+                    //Only one tag is possbile. Return that one.
+                    return possibleTags.GetRandomItem();
+                }
+                else
+                {
+                    //Multiple tags could be possible.
+                    //Use markov chains and tag probability to nominate a tag.
+
+                }
+            }
+            else
+            {
+                //Any tag could be possible. Rely on markov chains only.
+
+            }
+
+            return "{{ goddamit steve }}";
+        }
+
+        public string GetAllTagsForWord(string word)
         {
             try
             {

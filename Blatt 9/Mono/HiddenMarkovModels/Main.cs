@@ -32,7 +32,7 @@ namespace HiddenMarkovModels
 				Console.Write("Enter Word: ");
                 input = Console.ReadLine();
 
-                Console.WriteLine(wordDictionary.GetTagsForWord(input));
+                Console.WriteLine(wordDictionary.GetAllTagsForWord(input));
 				//Console.WriteLine(tagWords.GetRandomWordForTag(input));
 
             }while(input != "exit");
