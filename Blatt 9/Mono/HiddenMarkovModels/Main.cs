@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace HiddenMarkovModels
@@ -8,11 +7,13 @@ namespace HiddenMarkovModels
     {
         public static void Main (string[] args)
         {
+            PoSTagger tagger = null;
+
             try
             {
 				var reader = new StreamReader(@"heiseticker-tags.txt");
 
-                var tagger = PoSTagger.TrainFromFile(reader);
+                tagger = PoSTagger.TrainFromFile(reader);
             }
             catch(IOException)
             {
@@ -26,7 +27,7 @@ namespace HiddenMarkovModels
 				Console.Write("Enter Word: ");
                 input = Console.ReadLine();
 
-                Console.WriteLine(PoSTagger.TagSentence(input));
+                Console.WriteLine(tagger.TagSentence(input));
 				//Console.WriteLine(tagWords.GetRandomWordForTag(input));
 
             }while(input != "exit");
