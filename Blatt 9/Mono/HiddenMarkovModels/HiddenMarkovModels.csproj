@@ -39,7 +39,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="ProbabilityDictionary.cs" />
     <Compile Include="TagDictionary.cs" />
-    <Compile Include="WordTagDictionary.cs" />
+    <Compile Include="PoSTagger.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

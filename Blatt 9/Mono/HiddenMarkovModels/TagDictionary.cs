@@ -6,7 +6,7 @@ namespace HiddenMarkovModels
 {
     public class TagDictionary
     {
-        //                  word/tag                        tags
+        //                    tag  , predecessor tags / words for that tag
         protected Dictionary<string, ProbabilityDictionary<string>> dict;
 
         public TagDictionary ()
@@ -14,37 +14,37 @@ namespace HiddenMarkovModels
             dict = new Dictionary<string, ProbabilityDictionary<string>>();
         }
 
-        public void AddTag(string line)
+        public void AddToTag(string line)
         {
             var split = line.Split(new char[]{'\t'}, 2);
             if(split.Length == 2)
             {
-                AddTag(split[0].Trim (), split[1].Trim());
+                AddToTag(split[0].Trim (), split[1].Trim());
             }
         }
 
-        public void AddTag(string word, string tag)
+        public void AddToTag(string tag, string wordToAdd)
         {
             try
             {
-                dict[word].Add(tag);
+                dict[tag].Add(wordToAdd);
             }
             catch
             {
-                dict.Add(word, new ProbabilityDictionary<string>());
-                dict[word].Add(tag);
+                dict.Add(tag, new ProbabilityDictionary<string>());
+                dict[tag].Add(wordToAdd);
             }
         }
 
-        public string GetAllTags(string word)
+        public string GetAllWords(string tag)
         {
             try
             {
-                return dict[word].ToString();
+                return dict[tag].ToString();
             }
             catch
             {
-                return "{{ unknown word }}";
+                return "{{ unknown tag }}";
             }
         }
     }

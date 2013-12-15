@@ -8,17 +8,11 @@ namespace HiddenMarkovModels
     {
         public static void Main (string[] args)
         {
-            var wordDictionary = new TagDictionary();
-
             try
             {
 				var reader = new StreamReader(@"heiseticker-tags.txt");
 
-                while(!reader.EndOfStream)
-                {
-                    wordDictionary.AddTag(reader.ReadLine());
-                    //tagWords.Add(reader.ReadLine());
-                }
+                var tagger = PoSTagger.TrainFromFile(reader);
             }
             catch(IOException)
             {
